@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Messages</title>
+</head>
+<body>
+    <h1>Messages</h1>
+    <form method="get">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Get Messages</button>
+    </form>
+
+    {% if received_messages %}
+    <h2>Received Messages</h2>
+    <ul>
+        {% for message in received_messages %}
+            <li>From <strong>{{ message.sender }}</strong>: {{ message.message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+    {% if sent_messages %}
+        <h2>Sent Messages</h2>
+        <ul>
+            {% for message in sent_messages %}
+                <li>To <strong>{{ message.recipient }}</strong>: {{ message.message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</body>
+</html>
